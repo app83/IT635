@@ -5,9 +5,8 @@ services:
         restart: always
         build: .
         environment:
-            POSTGRES_PASSWORD: asdffdsa
-            POSTGRES_REPLICA_PASSWORD: asdffdsa
-            POSTGRES_NODES: "db1 db2 db3"
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: root
     db2:
         image: mongo:latest
         restart: always

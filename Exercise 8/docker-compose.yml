@@ -1,26 +1,19 @@
-version: "3.0"
+version: '3.1'
 services:
     db1:
         image: mongo:latest
-        restart: always
-        build: .
+        command: --replSet "rs1"
+        volumes:
+            - "./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: root
     db2:
         image: mongo:latest
-        restart: always
-        build: .
-        environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: root
+        command: --replSet "rs1"
     db3:
         image: mongo:latest
-        restart: always
-        build: .
-        environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: root
+        command: --replSet "rs1"
     adminer:
         image: adminer
         ports:
